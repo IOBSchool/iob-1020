@@ -29,25 +29,34 @@
   h1,h2,h3,.mincho{font-family:"Zen Old Mincho",serif;}
   a{color:var(--point);}
 
-  /* ===== ヒーロー ===== */
-  .hero{position:relative;min-height:80vh;display:flex;align-items:flex-end;
-    background-image:url("img/lecture.jpg");background-size:cover;background-position:70% center;padding:60px 0 36px;overflow:hidden;}
-  .hero::before{content:"";position:absolute;inset:0;
-    background:linear-gradient(to bottom,rgba(28,16,9,.10) 0%,rgba(28,16,9,.30) 25%,rgba(28,16,9,.72) 48%,rgba(28,16,9,.90) 70%,rgba(28,16,9,.95) 100%);}
-  .hero .wrap{position:relative;z-index:1;width:100%;}
-  .hero .eyebrow{display:inline-block;color:#fff;background:var(--point);font-size:13px;font-weight:700;letter-spacing:.04em;border-radius:999px;padding:2px 14px;margin-bottom:16px;}
-  .hero h1{font-size:28px;font-weight:700;line-height:1.55;margin-bottom:10px;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.85);}
-  .hero .sub{font-family:"Zen Old Mincho",serif;font-size:17px;font-weight:700;color:#ffe3d3;line-height:1.7;margin-bottom:16px;text-shadow:0 1px 10px rgba(0,0,0,.8);}
-  .hero .lead{font-size:15px;color:#f4e9dd;line-height:1.9;text-shadow:0 1px 12px rgba(0,0,0,.85);margin-bottom:18px;}
-  .hero .when{background:rgba(255,253,248,.95);color:var(--ink);border-radius:12px;padding:12px 16px;font-size:14.5px;line-height:1.75;}
-  .hero .when b{font-family:"Zen Old Mincho",serif;font-size:16.5px;}
-  .hero .cta{display:block;margin-top:16px;background:var(--point);color:#fff;text-decoration:none;text-align:center;padding:15px;border-radius:12px;font-weight:700;font-family:"Zen Old Mincho",serif;font-size:17px;}
-  .hero-cap{position:absolute;right:12px;top:10px;z-index:1;font-size:10.5px;color:rgba(255,255,255,.75);}
-  @media(max-width:480px){
-    .hero{min-height:88vh;background-position:74% 20%;padding-bottom:28px;}
-    .hero h1{font-size:25px;}
-    .hero .sub{font-size:15.5px;}
-    .hero .lead{font-size:14.5px;}
+  /* ===== ファーストビュー（縦書き・写真は文字と分ける） ===== */
+  .nw{display:inline-block}
+  .hero{background:var(--bg);padding:26px 0 30px;}
+  .hero .eyebrow{display:inline-block;color:#fff;background:var(--point);font-size:12.5px;font-weight:700;letter-spacing:.05em;border-radius:999px;padding:3px 14px;}
+  .hero .grid{display:flex;gap:12px;margin-top:20px;height:470px;}
+  .hero h1{writing-mode:vertical-rl;font-family:"Zen Old Mincho",serif;font-weight:900;font-size:26px;line-height:1.62;letter-spacing:.1em;height:100%;color:var(--ink);}
+  .hero h1 .o{color:var(--point);}
+  .hero h1 .tcy{text-combine-upright:all;}
+  .hero .ph{flex:1;min-width:0;border-radius:18px;background:url("img/natsuko.jpg") 38% 18%/cover;position:relative;}
+  .hero .who{position:absolute;left:10px;right:10px;bottom:10px;background:rgba(255,253,248,.93);border-radius:10px;padding:8px 10px;font-size:10.5px;line-height:1.6;color:var(--sub);white-space:nowrap;}
+  .hero .who b{font-family:"Zen Old Mincho",serif;font-size:14px;color:var(--ink);}
+  .hero .q{font-family:"Zen Old Mincho",serif;font-weight:700;font-size:16px;line-height:1.8;margin:22px 0 6px;text-align:center;}
+  .hero .s{font-size:13.5px;line-height:1.8;text-align:center;margin-bottom:16px;}
+  .hero .when{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:12px 16px;font-size:14px;line-height:1.75;}
+  .hero .when b{font-family:"Zen Old Mincho",serif;font-size:16px;}
+  .hero .cta{display:block;margin-top:14px;background:var(--point);color:#fff;text-decoration:none;text-align:center;padding:15px;border-radius:12px;font-weight:700;font-family:"Zen Old Mincho",serif;font-size:17px;letter-spacing:.04em;}
+  .lead-sec{padding:34px 0 0;}
+  @media(min-width:560px){
+    .hero .grid{height:560px;}
+    .hero h1{font-size:32px;}
+  }
+  @media(max-width:380px){
+    .hero .who{font-size:9.5px;padding:6px 8px;left:8px;right:8px;}
+    .hero .who b{font-size:12.5px;}
+  }
+  @media(max-width:360px){
+    .hero .grid{height:430px;}
+    .hero h1{font-size:24px;}
   }
 
   section{padding:40px 0;}
@@ -157,21 +166,29 @@ window.IOB_PHASE = (function(){
 
 <!-- ============ ファーストビュー（L1〜L7） ============ -->
 <header class="hero">
-  <div class="hero-cap">講座のようす</div>
   <div class="wrap">
     <div class="eyebrow">10月20日（火）無料オンライン講座</div>
-    <h1>オーガニックのモヤモヤを整理して、<br>気持ちよく暮らすための2時間半</h1>
-    <p class="sub"><b>オーガニックを知ったあと、私はどう暮らしたい？</b><br>食べもの・家族・値段・表示など、<br>普段気になっていることから一緒に考えます</p>
-    <p class="lead" id="L3L4">オーガニックについて知るほど、食べものや家族、値段、表示など、日々の中で「これはどう考えたらいいんだろう」と感じることも増えていきます。<br>10月20日は、そうした気になることを一つずつ見ながら、自分の毎日にとって大事なことを考える2時間半です。</p>
+    <div class="grid">
+      <h1>オーガニックの<br>モヤモヤを整理して、<br>気持ちよく暮らすための<br><span class="o"><span class="tcy">2</span>時間半</span></h1>
+      <div class="ph" role="img" aria-label="講師 レムケなつこ"><div class="who">講師　<b>レムケなつこ</b><br>ドイツ在住<br>オーガニック教育の専門家</div></div>
+    </div>
+    <p class="q"><span class="nw">オーガニックを知ったあと、</span><br><span class="nw">私はどう暮らしたい？</span></p>
+    <p class="s"><span class="nw">食べもの・家族・値段・表示など、</span><br><span class="nw">普段気になっていることから一緒に考えます</span></p>
     <div class="when"><b>2026年10月20日（火）</b><br><b>20:00〜22:30（日本時間）</b><br>13:00〜15:30（ドイツ時間）<br>オンライン（Google Meet）<br>参加無料・申込制</div>
     <a class="cta" href="#apply">無料オンライン講座に申し込む</a>
   </div>
 </header>
 
+<section class="lead-sec">
+  <div class="wrap">
+    <p class="lead" id="L3L4">オーガニックについて知るほど、食べものや家族、値段、表示など、日々の中で「これはどう考えたらいいんだろう」と感じることも増えていきます。<br>10月20日は、そうした気になることを一つずつ見ながら、自分の毎日にとって大事なことを考える2時間半です。</p>
+  </div>
+</section>
+
 <!-- ============ L9〜L14 ============ -->
 <section>
   <div class="wrap">
-    <h2 class="sec-title">気になっていることから、<br>自分の大事にしたいことを見つけます</h2>
+    <h2 class="sec-title"><span class="nw">気になっていることから、</span><br><span class="nw">自分の大事にしたいことを</span><span class="nw">見つけます</span></h2>
     <p>値段、表示、家族との考え方、食べものや化粧品のこと。</p>
     <p>普段ふと引っかかることを丁寧に見ていくと、その奥に「私は何を大事にしたいのか」が見えてくることがあります。</p>
     <p>家族の状況も、使えるお金も、日々の優先順位も、一人ひとり違います。</p>
